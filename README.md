@@ -2,7 +2,7 @@
 
 ## Report on the Neural Network Model
 
-1. Overview of the analysis:
+1. **Overview of the analysis:**
 
 The nonprofit foundation Alphabet Soup wants a tool that can help it select the applicants for funding with the best chance of success in their ventures.
 
@@ -21,20 +21,22 @@ The analysis begins with a dataset of more than 34,000 organizations that have r
 - ASK_AMT—Funding amount requested
 - IS_SUCCESSFUL—Was the money used effectively
 
-2. Results:
-    - Data Preprocessing
+2. **Results:**
+
+    - **Data Preprocessing**
+
         - Steps
             - The first step was to reduce the number of values in the columns "APPLICATION_TYPE" and "CLASSIFICATION", leaving the values with higher occurrences and grouping the rest in a value called "others". "APPLICATION_TYPE" was left with 9 values and "CLASSIFICATION" with 6. This step has the objective of reducing outliers.
             - Then I proceed to create the dummies for the categorical values.
             - Then the data was split in train and test data, and it was scaled using StandardScaler.
 
-        - What variable(s) are the target(s) for the model?
+        - What variable is the target for the model?
 
             The target variable is the feature **IS_SUCCESSFUL** which is a Boolean variable that takes values of 1 when the applicant was successful and 0 when not successful.
 
             ![](Pics/target_variable.png)
 
-        - What variable(s) are the features for the model?
+        - What variables are the features for the model?
 
             The variables used as features for the model are:
 
@@ -50,15 +52,15 @@ The analysis begins with a dataset of more than 34,000 organizations that have r
 
             ![](Pics/features.png)
 
-        - What variable(s) should be removed from the input data because they are neither targets nor features?
+        - What variables were removed from the input data because they are neither targets nor features?
 
             The variables that won't be used in the model are **EIN** and **NAME** as they are identification columns.
 
             ![](Pics/id_variables.png)
 
-    - Compiling, Training, and Evaluating the Model
+    - **Compiling, Training, and Evaluating the Model**
 
-        - How many neurons, layers, and activation functions did you select for your neural network model, and why?
+        - How many neurons, layers, and activation functions were selected in the neural network model, and why?
 
             - The initial model was set with 3 layers (Input, hidden and output) as a basic model
             - 20 neurons were selected in the input layer, a number within the range recommended which is up to the number of features (43)
@@ -68,13 +70,13 @@ The analysis begins with a dataset of more than 34,000 organizations that have r
 
             ![](Pics/initial_model.png)
 
-        - Were you able to achieve the target model performance?
+        - Did the model achieve the target model performance?
 
             - The initial model did not achieve the target performance. After 100 Epochs the accuracy reached was 72.9090%.
 
             ![](Pics/initial_accuracy.png)
 
-        - What steps did you take in your attempts to increase model performance?
+        - What steps were taken in the attempts to increase model performance?
 
             - Using a boxplot and calculating the quartiles, lower and higher bounds, outliers in the "ASK_AMT" feature were eliminated.
             - The number of bins for the "APPLICATION_TYPE" and "CLASSIFICATION" were increased in one (from 9 to 10 and from 6 to 7 respectively) to increase potential important components. This brought the total features to 45.
@@ -88,7 +90,7 @@ The analysis begins with a dataset of more than 34,000 organizations that have r
 
             ![](Pics/optimized_accuracy.png)
 
-3. Summary:
+3. **Summary:**
 
     - After optimization, the model did not reach the target accuracy, which means I would not recommend its usage to predict if applicants will be successful if funded by Alphabet Soup.
     - I would recommend trying K-Nearest Neighbors (KNN) model. This is a simpler model used for small to medium-sized datasets and can achieve the target accuracy if the outliers are removed from the dataset. It does not require training phase and requires less computational resources.
